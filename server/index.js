@@ -3,8 +3,8 @@ const cors = require('cors')
 const app = express()
 const port = 3000
 
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
 app.get('/say-hello', (req, res) => {
   res.send('Hello World!')
@@ -19,8 +19,8 @@ app.get('/repeat/:repeat', (req, res) => {
 })
 
 app.get('/query-test', (req, res) => {
-    const { query = {} } = req;
-    let queryArr = Object.entries(query);
+    const { query = {} } = req
+    let queryArr = Object.entries(query)
     if (!queryArr.length) res.send('You sent an empty query!')
     if(queryArr.length === 1){
         res.send(`You sent query: ${queryArr[0][0]} with value: ${queryArr[0][1]}!`)

@@ -2,6 +2,11 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
+const { default: axios } = require("axios");
+const { response } = require("express");
+
+// const { default: axios } = require("axios");
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -54,18 +59,17 @@ sayHelloButton.addEventListener('mouseout', () => {
 // DO NOT EDIT FUNCTION
 const sayHello = () => {
     axios.get('http://localhost:3000/say-hello').then((res) => {
-        let helloText = document.getElementById('hello-text');
-        helloText.style.display = 'block';
-        helloText.style.backgroundColor = 'green';
-        helloText.textContent = res.data;
+        let helloText = document.getElementById('hello-text')
+        helloText.style.display = 'block'
+        helloText.style.backgroundColor = 'green'
+        helloText.textContent = res.data
         // console.log('hello world');
     })
 }
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-console.log(sayHello)
-sayHelloButton.addEventListener('click', sayHello);
+sayHelloButton.addEventListener('click', sayHello)
 
 
 // PROBLEM 5 
@@ -76,11 +80,15 @@ sayHelloButton.addEventListener('click', sayHello);
     
     Use axios inside the ohMy function to make a GET request to 'http://localhost:3000/animals' 
     
-    Handle the promise that's returned with a .then, which you should pass a callback function to. Inside the callback function, console.log the response's data (in the intermediate instructions we'll come back to this function and add HTML).
+    Handle the promise that's returned with a .then, which you should pass a callback function to. 
+    Inside the callback function, console.log the response's data (in the intermediate instructions we'll come back to this function and add HTML).
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
+    return axios.get('http://localhost:3000/animals')
+    .then(res => {
+        console.log(res.data)
+    })
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -88,7 +96,8 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 // PROBLEM 6 
 /*
-    Now lets see if you can send a request param! inside repeatMyParam function below  make get request to 'http://localhost:3000/repeat/{SOMEPARAM}', but with a string instead of {SOMEPARAM}.  
+    Now lets see if you can send a request param! inside repeatMyParam function below  make get request to 'http://localhost:3000/repeat/{SOMEPARAM}', 
+    but with a string instead of {SOMEPARAM}.  
 
     The function that runs when this request is made will return whatever parameter you sent 
 
@@ -100,8 +109,17 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    //YOUR CODE HERE
+    return axios.get('http://localhost:3000/repeat/name')
+    .then(res => {
+        return res.data
+    })
+    const repeatText = document.querySelector('#repeat-text')
+    repeatText.textContent = res.data
 }
+
+const repeatButton = document.querySelector('#repeat-button')
+repeatButton.addEventListener('click', repeatMyParam)
+
 
 // PROBLEM 7
 /*
@@ -124,6 +142,14 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
+
+function myQuery = () => {
+    axios.get('http://localhost:3000/query-test/?name=Adam')
+    .then(({ data }) => console.log(data))
+}
+
+const myQueryBtn = document.querySelector('#query-button')
+myQueryBtn.addEventListener('click', myQuery)
 
 
 
