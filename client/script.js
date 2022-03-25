@@ -22,7 +22,10 @@ const sayHelloButton = document.querySelector('#say-hello-button')
 */
 
 // CODE HERE
-
+sayHelloButton.addEventListener('mouseover', () => {
+    sayHelloButton.style.backgroundColor = 'black'
+    sayHelloButton.style.color = 'white'
+});
 
 
 // PROBLEM 3
@@ -35,6 +38,10 @@ const sayHelloButton = document.querySelector('#say-hello-button')
 */
 
 // CODE HERE
+sayHelloButton.addEventListener('mouseout', () => {
+    sayHelloButton.style.backgroundColor = '#EFEFEF'
+    sayHelloButton.style.color = 'black'
+});
 
 
 // PROBLEM 4
@@ -51,11 +58,14 @@ const sayHello = () => {
         helloText.style.display = 'block';
         helloText.style.backgroundColor = 'green';
         helloText.textContent = res.data;
+        // console.log('hello world');
     })
 }
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
+console.log(sayHello)
+sayHelloButton.addEventListener('click', sayHello);
 
 
 // PROBLEM 5 
