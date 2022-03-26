@@ -2,11 +2,6 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
-const { default: axios } = require("axios");
-const { response } = require("express");
-
-// const { default: axios } = require("axios");
-
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -63,7 +58,6 @@ const sayHello = () => {
         helloText.style.display = 'block'
         helloText.style.backgroundColor = 'green'
         helloText.textContent = res.data
-        // console.log('hello world');
     })
 }
 // DO NOT EDIT FUNCTION
@@ -109,10 +103,9 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    return axios.get('http://localhost:3000/repeat/name')
-    .then(res => {
-        return res.data
-    })
+    return axios.get('http://localhost:3000/repeat/what-is-my-name')
+    .then(res => res.data)
+   
     const repeatText = document.querySelector('#repeat-text')
     repeatText.textContent = res.data
 }
@@ -125,7 +118,8 @@ repeatButton.addEventListener('click', repeatMyParam)
 /*
     Now that we have the response data, let's add it to our web page! 
     
-    Inside the repeatMyParam function above, grab the element with the id of 'repeat-text' and set its textContent property equal to the response data.
+    Inside the repeatMyParam function above, grab the element with the id of 'repeat-text' and set its textContent property equal to the 
+    response data.
 */
 
 // Code in the repeatMyParam function above
@@ -143,7 +137,7 @@ repeatButton.addEventListener('click', repeatMyParam)
 
 // CODE HERE
 
-function myQuery = () => {
+function myQuery() {
     axios.get('http://localhost:3000/query-test/?name=Adam')
     .then(({ data }) => console.log(data))
 }
